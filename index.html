@@ -11,43 +11,173 @@
             padding: 0;
         }
 
+        /* Theme: Windows 3.1 */
+        .theme-win31 {
+            --bg-main: #c0c0c0;
+            --bg-panel: #c0c0c0;
+            --bg-input: #fff;
+            --bg-button: #c0c0c0;
+            --bg-button-active: #dfdfdf;
+            --bg-header: #000080;
+            --bg-toast: #000080;
+            --text-main: #000;
+            --text-header: #fff;
+            --text-subtitle: #c0c0c0;
+            --text-placeholder: #808080;
+            --border-light: #fff;
+            --border-dark: #808080;
+            --border-input: #808080;
+            --border-radius: 0;
+            --border-style: solid;
+        }
+
+        /* Theme: White (Light) */
+        .theme-white {
+            --bg-main: #e8e8e8;
+            --bg-panel: #fff;
+            --bg-input: #fff;
+            --bg-button: #e0e0e0;
+            --bg-button-active: #d0d0d0;
+            --bg-header: #fff;
+            --bg-toast: #2563eb;
+            --text-main: #333;
+            --text-header: #2563eb;
+            --text-subtitle: #666;
+            --text-placeholder: #999;
+            --border-light: #ccc;
+            --border-dark: #000;
+            --border-input: #000;
+            --border-radius: 6px;
+            --border-style: solid;
+        }
+
+        /* Theme: Black (Dark) */
+        .theme-black {
+            --bg-main: #1a1a1a;
+            --bg-panel: #000;
+            --bg-input: #000;
+            --bg-button: #333;
+            --bg-button-active: #444;
+            --bg-header: #000;
+            --bg-toast: #60a5fa;
+            --text-main: #e0e0e0;
+            --text-header: #60a5fa;
+            --text-subtitle: #888;
+            --text-placeholder: #666;
+            --border-light: #444;
+            --border-dark: #fff;
+            --border-input: #fff;
+            --border-radius: 6px;
+            --border-style: solid;
+        }
+
         body {
             font-family: 'Arial', 'MS Sans Serif', sans-serif;
-            background: #c0c0c0;
+            background: var(--bg-main);
             min-height: 100vh;
             padding: 20px;
-            color: #000;
+            color: var(--text-main);
         }
 
         .container {
             max-width: 900px;
             margin: 0 auto;
+            position: relative;
+        }
+
+        /* Theme Selector */
+        .theme-selector {
+            position: absolute;
+            top: 0;
+            right: 0;
+            z-index: 100;
+        }
+
+        .theme-btn {
+            padding: 6px 12px;
+            background: var(--bg-button);
+            border: 2px var(--border-style);
+            border-color: var(--border-light) var(--border-dark) var(--border-dark) var(--border-light);
+            border-radius: var(--border-radius);
+            color: var(--text-main);
+            cursor: pointer;
+            font-size: 0.8rem;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .theme-btn:active {
+            border-color: var(--border-dark) var(--border-light) var(--border-light) var(--border-dark);
+        }
+
+        .theme-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            right: 0;
+            margin-top: 2px;
+            background: var(--bg-panel);
+            border: 2px var(--border-style);
+            border-color: var(--border-light) var(--border-dark) var(--border-dark) var(--border-light);
+            border-radius: var(--border-radius);
+            min-width: 120px;
+        }
+
+        .theme-menu.show {
+            display: block;
+        }
+
+        .theme-option {
+            display: block;
+            width: 100%;
+            padding: 8px 12px;
+            background: var(--bg-button);
+            border: none;
+            border-bottom: 1px solid var(--border-light);
+            color: var(--text-main);
+            cursor: pointer;
+            font-size: 0.8rem;
+            font-family: 'Arial', sans-serif;
+            text-align: left;
+        }
+
+        .theme-option:last-child {
+            border-bottom: none;
+        }
+
+        .theme-option:hover {
+            background: var(--bg-button-active);
+        }
+
+        .theme-option.active {
+            background: var(--bg-button-active);
+            font-weight: bold;
         }
 
         header {
             text-align: center;
             margin-bottom: 20px;
             padding: 8px;
-            background: #000080;
-            color: #fff;
-            border: 2px solid;
-            border-color: #fff #808080 #808080 #fff;
+            background: var(--bg-header);
+            color: var(--text-header);
+            border: 2px var(--border-style);
+            border-color: var(--border-light) var(--border-dark) var(--border-dark) var(--border-light);
+            border-radius: var(--border-radius);
         }
 
         h1 {
             font-size: 1.4rem;
             margin-bottom: 4px;
-            color: #fff;
+            color: var(--text-header);
             font-weight: bold;
         }
 
         .version {
             font-size: 0.75rem;
-            color: #c0c0c0;
+            color: var(--text-subtitle);
         }
 
         .subtitle {
-            color: #c0c0c0;
+            color: var(--text-subtitle);
             font-size: 0.85rem;
         }
 
@@ -64,38 +194,40 @@
         }
 
         .panel {
-            background: #c0c0c0;
-            border: 2px solid;
-            border-color: #fff #808080 #808080 #fff;
+            background: var(--bg-panel);
+            border: 2px var(--border-style);
+            border-color: var(--border-light) var(--border-dark) var(--border-dark) var(--border-light);
+            border-radius: var(--border-radius);
             padding: 15px;
         }
 
         .panel h2 {
             font-size: 0.95rem;
             margin-bottom: 10px;
-            color: #000;
+            color: var(--text-main);
             font-weight: bold;
         }
 
         textarea {
             width: 100%;
             height: 200px;
-            background: #fff;
-            border: 2px solid;
-            border-color: #808080 #fff #fff #808080;
+            background: var(--bg-input);
+            border: 2px var(--border-style);
+            border-color: var(--border-dark) var(--border-light) var(--border-light) var(--border-dark);
+            border-radius: var(--border-radius);
             padding: 8px;
-            color: #000;
+            color: var(--text-main);
             font-family: 'Courier New', 'Fixedsys', monospace;
             font-size: 12px;
             resize: vertical;
         }
 
         textarea:focus {
-            outline: 1px dotted #000;
+            outline: 1px dotted var(--text-main);
         }
 
         textarea::placeholder {
-            color: #808080;
+            color: var(--text-placeholder);
         }
 
         .controls {
@@ -111,10 +243,11 @@
         .mode-btn {
             flex: 1;
             padding: 6px 12px;
-            background: #c0c0c0;
-            border: 2px solid;
-            border-color: #fff #808080 #808080 #fff;
-            color: #000;
+            background: var(--bg-button);
+            border: 2px var(--border-style);
+            border-color: var(--border-light) var(--border-dark) var(--border-dark) var(--border-light);
+            border-radius: var(--border-radius);
+            color: var(--text-main);
             cursor: pointer;
             font-size: 0.85rem;
             font-weight: normal;
@@ -122,12 +255,12 @@
         }
 
         .mode-btn:active {
-            border-color: #808080 #fff #fff #808080;
+            border-color: var(--border-dark) var(--border-light) var(--border-light) var(--border-dark);
         }
 
         .mode-btn.active {
-            background: #dfdfdf;
-            border-color: #808080 #fff #fff #808080;
+            background: var(--bg-button-active);
+            border-color: var(--border-dark) var(--border-light) var(--border-light) var(--border-dark);
         }
 
         .action-buttons {
@@ -138,10 +271,11 @@
         .btn {
             flex: 1;
             padding: 8px 16px;
-            background: #c0c0c0;
-            border: 2px solid;
-            border-color: #fff #808080 #808080 #fff;
-            color: #000;
+            background: var(--bg-button);
+            border: 2px var(--border-style);
+            border-color: var(--border-light) var(--border-dark) var(--border-dark) var(--border-light);
+            border-radius: var(--border-radius);
+            color: var(--text-main);
             cursor: pointer;
             font-size: 0.85rem;
             font-weight: normal;
@@ -149,37 +283,27 @@
         }
 
         .btn:active {
-            border-color: #808080 #fff #fff #808080;
-        }
-
-        .btn-primary {
-            background: #c0c0c0;
-        }
-
-        .btn-secondary {
-            background: #c0c0c0;
-        }
-
-        .btn-copy {
-            background: #c0c0c0;
+            border-color: var(--border-dark) var(--border-light) var(--border-light) var(--border-dark);
         }
 
         .stats {
             margin-top: 10px;
             padding: 6px 8px;
-            background: #fff;
-            border: 1px solid #808080;
+            background: var(--bg-input);
+            border: 1px solid var(--border-dark);
+            border-radius: var(--border-radius);
             font-size: 0.8rem;
-            color: #000;
+            color: var(--text-main);
         }
 
         .warning {
             margin-top: 8px;
             padding: 6px 8px;
-            background: #fff;
-            border: 2px solid #000;
+            background: var(--bg-input);
+            border: 2px solid var(--border-dark);
+            border-radius: var(--border-radius);
             font-size: 0.8rem;
-            color: #000;
+            color: var(--text-main);
             display: none;
         }
 
@@ -192,11 +316,12 @@
             bottom: 20px;
             left: 50%;
             transform: translateX(-50%) translateY(100px);
-            background: #000080;
+            background: var(--bg-toast);
             color: #fff;
             padding: 8px 16px;
-            border: 2px solid;
-            border-color: #fff #808080 #808080 #fff;
+            border: 2px var(--border-style);
+            border-color: var(--border-light) var(--border-dark) var(--border-dark) var(--border-light);
+            border-radius: var(--border-radius);
             font-weight: normal;
             opacity: 0;
             z-index: 1000;
@@ -210,13 +335,14 @@
         .instructions {
             margin-top: 20px;
             padding: 15px;
-            background: #c0c0c0;
-            border: 2px solid;
-            border-color: #fff #808080 #808080 #fff;
+            background: var(--bg-panel);
+            border: 2px var(--border-style);
+            border-color: var(--border-light) var(--border-dark) var(--border-dark) var(--border-light);
+            border-radius: var(--border-radius);
         }
 
         .instructions h3 {
-            color: #000;
+            color: var(--text-main);
             margin-bottom: 10px;
             font-size: 0.95rem;
             font-weight: bold;
@@ -224,21 +350,31 @@
 
         .instructions ol {
             margin-left: 20px;
-            color: #000;
+            color: var(--text-main);
             line-height: 1.6;
         }
 
         .instructions code {
-            background: #fff;
+            background: var(--bg-input);
             padding: 1px 4px;
-            border: 1px solid #808080;
-            color: #000;
+            border: 1px solid var(--border-dark);
+            border-radius: var(--border-radius);
+            color: var(--text-main);
             font-family: 'Courier New', monospace;
         }
     </style>
 </head>
-<body>
+<body class="theme-win31">
     <div class="container">
+        <div class="theme-selector">
+            <button class="theme-btn" onclick="toggleThemeMenu()">Theme</button>
+            <div class="theme-menu" id="theme-menu">
+                <button class="theme-option active" data-theme="theme-win31">Win 3.1</button>
+                <button class="theme-option" data-theme="theme-white">White</button>
+                <button class="theme-option" data-theme="theme-black">Black</button>
+            </div>
+        </div>
+
         <header>
             <h1>Excel to Semicolon Converter</h1>
             <p class="version">v1.0.0</p>
@@ -248,8 +384,8 @@
         <div class="main-content">
             <div class="panel">
                 <h2>Input (Paste from Excel)</h2>
-                <textarea 
-                    id="input" 
+                <textarea
+                    id="input"
                     placeholder="Paste your Excel column here...&#10;&#10;Example:&#10;Part001&#10;Part002&#10;Part003"
                 ></textarea>
                 <div class="controls">
@@ -274,8 +410,8 @@
 
             <div class="panel">
                 <h2>Output</h2>
-                <textarea 
-                    id="output" 
+                <textarea
+                    id="output"
                     placeholder="Converted result will appear here..."
                     readonly
                 ></textarea>
@@ -312,6 +448,43 @@
     <script>
         // Current mode
         let currentMode = ';';
+
+        // Theme management
+        function toggleThemeMenu() {
+            const menu = document.getElementById('theme-menu');
+            menu.classList.toggle('show');
+        }
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            const menu = document.getElementById('theme-menu');
+            const btn = document.querySelector('.theme-btn');
+            if (!menu.contains(e.target) && e.target !== btn) {
+                menu.classList.remove('show');
+            }
+        });
+
+        // Theme selector
+        document.querySelectorAll('.theme-option').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const theme = btn.dataset.theme;
+                document.body.className = theme;
+                document.querySelectorAll('.theme-option').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                document.getElementById('theme-menu').classList.remove('show');
+                // Save theme preference
+                localStorage.setItem('theme', theme);
+            });
+        });
+
+        // Load saved theme
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+            document.body.className = savedTheme;
+            document.querySelectorAll('.theme-option').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.theme === savedTheme);
+            });
+        }
 
         // Mode selector
         document.querySelectorAll('.mode-btn').forEach(btn => {
