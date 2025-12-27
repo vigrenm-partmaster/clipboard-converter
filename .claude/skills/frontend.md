@@ -4,7 +4,7 @@ This skill documents the theme system for the clipboard converter frontend.
 
 ## Available Themes
 
-The application supports three themes, selectable via the "Theme" button in the top-right corner.
+The application supports themes, selectable via the "Theme" button in the top-right corner.
 
 ### 1. Win 3.1 (Windows 3.1 / Retro)
 
@@ -87,7 +87,7 @@ All themes use CSS custom properties for easy customization:
 
 Located in the top-right corner of the application:
 - Click "Theme" button to open dropdown menu
-- Select from: Win 3.1, White, Black
+- Select one
 - Theme preference is saved to localStorage
 
 ## Target File
@@ -118,26 +118,6 @@ When modifying themes:
 
 1. **Read the current index.html** to understand the CSS variable structure
 2. **Modify theme variables** in the appropriate `.theme-*` class
-3. **Test all three themes** to ensure consistency
+3. **Test all themes** to ensure consistency
 4. **Preserve the theme switching JavaScript** logic
 5. **Commit changes** with descriptive message
-
-## Design Principles
-
-### Win 3.1 Theme
-- Flat colors, no gradients
-- 3D beveled borders (light top/left, dark bottom/right)
-- Square corners
-- No shadows
-
-### White Theme
-- Light gray background with white panels
-- Blue accent color for headers
-- Rounded corners
-- Black borders
-
-### Black Theme
-- Dark background with black panels
-- Light blue accent color for headers
-- Rounded corners
-- White borders (inverted from white theme)
