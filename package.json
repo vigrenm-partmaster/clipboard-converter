@@ -1,0 +1,24 @@
+{
+  "name": "clipboard-converter",
+  "version": "1.0.0",
+  "description": "Convert Excel column data to semicolon-separated format",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "build-win": "electron-packager . ClipboardConverter --platform=win32 --arch=x64 --out=dist --overwrite",
+    "build-mac": "electron-packager . ClipboardConverter --platform=darwin --arch=x64 --out=dist --overwrite",
+    "build-linux": "electron-packager . ClipboardConverter --platform=linux --arch=x64 --out=dist --overwrite"
+  },
+  "keywords": [
+    "clipboard",
+    "converter",
+    "excel",
+    "semicolon"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^28.0.0",
+    "electron-packager": "^17.1.2"
+  }
+}
