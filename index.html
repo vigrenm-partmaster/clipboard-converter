@@ -338,10 +338,10 @@
             let result;
             if (currentMode === ';') {
                 // Join with semicolon
-                result = lines.map(line => line.trim()).join(';');
+                result = lines.map(line => line.trim().toUpperCase()).join(';');
             } else {
                 // Prepend ;= to each item
-                result = lines.map(line => ';=' + line.trim()).join('');
+                result = lines.map(line => ';=' + line.trim().toUpperCase()).join('');
             }
 
             output.value = result;
