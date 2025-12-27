@@ -185,6 +185,21 @@
             color: #888;
         }
 
+        .warning {
+            margin-top: 10px;
+            padding: 10px 15px;
+            background: rgba(255, 165, 0, 0.2);
+            border: 1px solid rgba(255, 165, 0, 0.5);
+            border-radius: 6px;
+            font-size: 0.85rem;
+            color: #ffa500;
+            display: none;
+        }
+
+        .warning.show {
+            display: block;
+        }
+
         .toast {
             position: fixed;
             bottom: 30px;
@@ -285,6 +300,9 @@
                 <div class="stats" id="stats">
                     Items: 0 | Characters: 0
                 </div>
+                <div class="warning" id="warning">
+                    ⚠️ Warning: exceeding ~2500 parts might not work
+                </div>
             </div>
         </div>
 
@@ -324,6 +342,7 @@
             const input = document.getElementById('input').value;
             const output = document.getElementById('output');
             const stats = document.getElementById('stats');
+            const warning = document.getElementById('warning');
 
             // Split by newlines and filter empty lines
             const lines = input.split(/\r?\n/).filter(line => line.trim() !== '');
@@ -331,6 +350,7 @@
             if (lines.length === 0) {
                 output.value = '';
                 stats.textContent = 'Items: 0 | Characters: 0';
+                warning.classList.remove('show');
                 return;
             }
 
@@ -346,6 +366,13 @@
 
             output.value = result;
             stats.textContent = `Items: ${lines.length} | Characters: ${result.length}`;
+
+            // Show warning if exceeding ~30000 characters (~2500 parts)
+            if (lines.length > 2500 || result.length > 30000) {
+                warning.classList.add('show');
+            } else {
+                warning.classList.remove('show');
+            }
         }
 
         // Copy output
@@ -371,6 +398,7 @@
             document.getElementById('input').value = '';
             document.getElementById('output').value = '';
             document.getElementById('stats').textContent = 'Items: 0 | Characters: 0';
+            document.getElementById('warning').classList.remove('show');
         }
 
         // Toast notification
