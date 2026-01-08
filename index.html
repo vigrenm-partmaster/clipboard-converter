@@ -31,66 +31,6 @@
             --border-style: solid;
         }
 
-        /* Theme: White (Light) */
-        .theme-white {
-            --bg-main: #e8e8e8;
-            --bg-panel: #fff;
-            --bg-input: #fff;
-            --bg-button: #e0e0e0;
-            --bg-button-active: #d0d0d0;
-            --bg-header: #fff;
-            --bg-toast: #2563eb;
-            --text-main: #333;
-            --text-header: #2563eb;
-            --text-subtitle: #666;
-            --text-placeholder: #999;
-            --border-light: #ccc;
-            --border-dark: #000;
-            --border-input: #000;
-            --border-radius: 3px;
-            --border-style: solid;
-        }
-
-        /* Theme: Black (Dark) */
-        .theme-black {
-            --bg-main: #1a1a1a;
-            --bg-panel: #000;
-            --bg-input: #000;
-            --bg-button: #222;
-            --bg-button-active: #444;
-            --bg-header: #000;
-            --bg-toast: #60a5fa;
-            --text-main: #a0a0a0;
-            --text-header: #60a5fa;
-            --text-subtitle: #888;
-            --text-placeholder: #555;
-            --border-light: #444;
-            --border-dark: #fff;
-            --border-input: #fff;
-            --border-radius: 3px;
-            --border-style: solid;
-        }
-
-        /* Theme: IFS */
-        .theme-ifs {
-            --bg-main: #f4f2f4;
-            --bg-panel: #ffffff;
-            --bg-input: #ffffff;
-            --bg-button: #e8e8e8;
-            --bg-button-active: #d9d9d9;
-            --bg-header: #FFAA35;
-            --bg-toast: #8427e2;
-            --text-main: #1a1b1d;
-            --text-header: #ffffff;
-            --text-subtitle: #f4f2f4;
-            --text-placeholder: #a2a2a5;
-            --border-light: #e8e8e8;
-            --border-dark: #d9d9d9;
-            --border-input: #8c8c8c;
-            --border-radius: 3px;
-            --border-style: solid;
-        }
-
         /* Theme: Crystal White (Modern Apple-inspired light) */
         .theme-crystal-white {
             --bg-main: linear-gradient(135deg, #f5f5f7 0%, #e8e8ed 100%);
@@ -562,16 +502,13 @@
         }
     </style>
 </head>
-<body class="theme-win31">
+<body class="theme-crystal-white">
     <div class="container">
         <div class="theme-selector">
             <button class="theme-btn" onclick="toggleThemeMenu()">Theme</button>
             <div class="theme-menu" id="theme-menu">
-                <button class="theme-option active" data-theme="theme-win31">Win 3.1</button>
-                <button class="theme-option" data-theme="theme-white">White</button>
-                <button class="theme-option" data-theme="theme-black">Black</button>
-                <button class="theme-option" data-theme="theme-ifs">IFS</button>
-                <button class="theme-option" data-theme="theme-crystal-white">Crystal White</button>
+                <button class="theme-option" data-theme="theme-win31">Win 3.1</button>
+                <button class="theme-option active" data-theme="theme-crystal-white">Crystal White</button>
                 <button class="theme-option" data-theme="theme-crystal-black">Crystal Black</button>
             </div>
         </div>
@@ -621,7 +558,7 @@
                     </div>
                 </div>
                 <div class="stats" id="stats">
-                    Items: 0 | Characters: 0
+                    Items: 0 | Characters: 0 | Duplicates removed: 0
                 </div>
                 <div class="warning" id="warning">
                     Warning: exceeding ~2500 parts might not work
@@ -710,26 +647,31 @@
 
             if (lines.length === 0) {
                 output.value = '';
-                stats.textContent = 'Items: 0 | Characters: 0';
+                stats.textContent = 'Items: 0 | Characters: 0 | Duplicates: 0';
                 warning.classList.remove('show');
                 return;
             }
+
+            // Normalize and remove duplicates
+            const normalizedLines = lines.map(line => line.trim().toUpperCase());
+            const uniqueLines = [...new Set(normalizedLines)];
+            const duplicatesRemoved = normalizedLines.length - uniqueLines.length;
 
             // Apply the selected mode
             let result;
             if (currentMode === ';') {
                 // Join with semicolon
-                result = lines.map(line => line.trim().toUpperCase()).join(';');
+                result = uniqueLines.join(';');
             } else {
                 // Prepend ;= to each item
-                result = lines.map(line => '=' + line.trim().toUpperCase()).join(';');
+                result = uniqueLines.map(line => '=' + line).join(';');
             }
 
             output.value = result;
-            stats.textContent = `Items: ${lines.length} | Characters: ${result.length}`;
+            stats.textContent = `Items: ${uniqueLines.length} | Characters: ${result.length} | Duplicates removed: ${duplicatesRemoved}`;
 
             // Show warning if exceeding ~30000 characters (~2500 parts)
-            if (lines.length > 2500 || result.length > 30000) {
+            if (uniqueLines.length > 2500 || result.length > 30000) {
                 warning.classList.add('show');
             } else {
                 warning.classList.remove('show');
@@ -758,7 +700,7 @@
         function clearAll() {
             document.getElementById('input').value = '';
             document.getElementById('output').value = '';
-            document.getElementById('stats').textContent = 'Items: 0 | Characters: 0';
+            document.getElementById('stats').textContent = 'Items: 0 | Characters: 0 | Duplicates removed: 0';
             document.getElementById('warning').classList.remove('show');
         }
 

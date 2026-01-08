@@ -1,10 +1,10 @@
 # Frontend Theme System Skill
 
-This skill documents the theme system for the clipboard converter frontend.
+This skill documents the theme system and features for the clipboard converter frontend.
 
 ## Available Themes
 
-The application supports 6 themes, selectable via the "Theme" button in the top-right corner.
+The application supports 3 themes, selectable via the "Theme" button in the top-right corner. **Crystal White is the default theme.**
 
 ### 1. Win 3.1 (Windows 3.1 / Retro)
 
@@ -24,59 +24,7 @@ Classic Windows 3.1 aesthetic with 3D beveled buttons.
 - System fonts (Arial, MS Sans Serif)
 - No shadows or gradients
 
-### 2. White (Light Theme)
-
-Clean, modern light theme with subtle styling.
-
-**Colors:**
-- Background: `#e8e8e8` (light gray)
-- Panels: `#fff` (white)
-- Input fields: `#fff` (white)
-- Header: `#fff` (white) with blue text
-- Title text: `#2563eb` (blue)
-- Body text: `#333` (dark gray)
-- Buttons: `#e0e0e0` (light gray) with black borders
-
-**Style:**
-- Rounded corners (`border-radius: 3px`)
-- Clean, minimal appearance
-- No beveled borders
-
-### 3. Black (Dark Theme)
-
-Dark theme, opposite of the white theme.
-
-**Colors:**
-- Background: `#1a1a1a` (dark gray)
-- Panels: `#000` (black)
-- Input fields: `#000` (black)
-- Header: `#000` (black) with blue text
-- Title text: `#60a5fa` (light blue)
-- Body text: `#f0f0f0` (light gray)
-- Buttons: `#333` (dark gray)
-
-**Style:**
-- Rounded corners (`border-radius: 3px`)
-- White borders on buttons and inputs
-- Dark, high-contrast appearance
-- No beveled borders
-
-### 4. IFS (Corporate)
-
-IFS branded corporate theme.
-
-**Colors:**
-- Background: `#f4f2f4` (light purple-gray)
-- Panels: `#ffffff` (white)
-- Header: `#FFAA35` (orange)
-- Text: `#1a1b1d` (near black)
-- Toast: `#8427e2` (purple)
-
-**Style:**
-- Rounded corners (`border-radius: 3px`)
-- Clean corporate appearance
-
-### 5. Crystal White (Modern Apple-inspired Light)
+### 2. Crystal White (Modern Apple-inspired Light) - DEFAULT
 
 Modern glassmorphism theme inspired by Apple's crystal design language.
 
@@ -95,7 +43,7 @@ Modern glassmorphism theme inspired by Apple's crystal design language.
 - System font stack (-apple-system, SF Pro Display)
 - No beveled borders - flat modern design
 
-### 6. Crystal Black (Modern Apple-inspired Dark)
+### 3. Crystal Black (Modern Apple-inspired Dark)
 
 Dark glassmorphism theme matching Apple's dark mode crystal aesthetic.
 
@@ -113,7 +61,22 @@ Dark glassmorphism theme matching Apple's dark mode crystal aesthetic.
 - Smooth hover transitions
 - System font stack (-apple-system, SF Pro Display)
 - Subtle light borders for depth
-  
+
+## Features
+
+### Duplicate Removal
+
+The converter automatically removes duplicate values from the input:
+- Duplicates are detected after normalizing to uppercase
+- The stats display shows: `Items: X | Characters: Y | Duplicates removed: Z`
+- Only unique values appear in the output
+
+### Output Modes
+
+Two separator modes available:
+- **Semicolon (;)**: Values joined with semicolons: `VALUE1;VALUE2;VALUE3`
+- **Semicolon Equals (;=)**: Values prefixed with equals: `=VALUE1;=VALUE2;=VALUE3`
+
 ## CSS Variables
 
 All themes use CSS custom properties for easy customization:
@@ -133,7 +96,7 @@ All themes use CSS custom properties for easy customization:
 --border-light     /* Light border color (3D effect) */
 --border-dark      /* Dark border color (3D effect) */
 --border-input     /* Input field border */
---border-radius    /* Corner radius (0 for Win3.1) */
+--border-radius    /* Corner radius (0 for Win3.1, 12px for Crystal) */
 --border-style     /* Border style (solid) */
 ```
 
@@ -165,6 +128,8 @@ To add a new theme:
 ```html
 <button class="theme-option" data-theme="theme-newname">New Theme</button>
 ```
+
+3. For crystal-style themes, add glassmorphism overrides with `backdrop-filter: blur()`.
 
 ## Agent Handover Instructions
 
