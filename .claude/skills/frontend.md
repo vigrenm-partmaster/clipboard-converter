@@ -36,12 +36,12 @@ Clean, modern light theme with subtle styling.
 - Title text: `#2563eb` (blue)
 - Body text: `#333` (dark gray)
 - Buttons: `#e0e0e0` (light gray) with black borders
-
+- No leveled borders
 **Style:**
-- Rounded corners (`border-radius: 6px`)
-- Black borders on buttons and inputs
+- Rounded corners (`border-radius: 1px`)
 - Clean, minimal appearance
-
+- No leveled borders
+- 
 ### 3. Black (Dark Theme)
 
 Dark theme, opposite of the white theme.
@@ -52,14 +52,15 @@ Dark theme, opposite of the white theme.
 - Input fields: `#000` (black)
 - Header: `#000` (black) with blue text
 - Title text: `#60a5fa` (light blue)
-- Body text: `#e0e0e0` (light gray)
-- Buttons: `#333` (dark gray) with white borders
+- Body text: `#f0f0f0` (light gray)
+- Buttons: `#333` (dark gray)
 
 **Style:**
-- Rounded corners (`border-radius: 6px`)
+- Rounded corners (`border-radius: 1px`)
 - White borders on buttons and inputs
 - Dark, high-contrast appearance
-
+- No leveled borders
+  
 ## CSS Variables
 
 All themes use CSS custom properties for easy customization:
