@@ -411,10 +411,10 @@
                 ></textarea>
                 <div class="controls">
                     <div class="mode-selector">
-                        <button class="mode-btn" data-mode=";" id="mode-semicolon">
+                        <button class="mode-btn active" data-mode=";" id="mode-semicolon">
                             ; (Semicolon)
                         </button>
-                        <button class="mode-btn active" data-mode=";=" id="mode-semicolon-equals">
+                        <button class="mode-btn" data-mode=";=" id="mode-semicolon-equals">
                             ;= (Semicolon Equals)
                         </button>
                     </div>
@@ -542,7 +542,7 @@
                 result = lines.map(line => line.trim().toUpperCase()).join(';');
             } else {
                 // Prepend ;= to each item
-                result = lines.map(line => '=' + line.trim().toUpperCase()).join(';=');
+                result = lines.map(line => '=' + line.trim().toUpperCase()).join(';');
             }
 
             output.value = result;
