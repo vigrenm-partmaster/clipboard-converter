@@ -4,7 +4,7 @@ This skill documents the theme system for the clipboard converter frontend.
 
 ## Available Themes
 
-The application supports themes, selectable via the "Theme" button in the top-right corner.
+The application supports 6 themes, selectable via the "Theme" button in the top-right corner.
 
 ### 1. Win 3.1 (Windows 3.1 / Retro)
 
@@ -36,12 +36,12 @@ Clean, modern light theme with subtle styling.
 - Title text: `#2563eb` (blue)
 - Body text: `#333` (dark gray)
 - Buttons: `#e0e0e0` (light gray) with black borders
-- No leveled borders
+
 **Style:**
-- Rounded corners (`border-radius: 1px`)
+- Rounded corners (`border-radius: 3px`)
 - Clean, minimal appearance
-- No leveled borders
-- 
+- No beveled borders
+
 ### 3. Black (Dark Theme)
 
 Dark theme, opposite of the white theme.
@@ -56,10 +56,63 @@ Dark theme, opposite of the white theme.
 - Buttons: `#333` (dark gray)
 
 **Style:**
-- Rounded corners (`border-radius: 1px`)
+- Rounded corners (`border-radius: 3px`)
 - White borders on buttons and inputs
 - Dark, high-contrast appearance
-- No leveled borders
+- No beveled borders
+
+### 4. IFS (Corporate)
+
+IFS branded corporate theme.
+
+**Colors:**
+- Background: `#f4f2f4` (light purple-gray)
+- Panels: `#ffffff` (white)
+- Header: `#FFAA35` (orange)
+- Text: `#1a1b1d` (near black)
+- Toast: `#8427e2` (purple)
+
+**Style:**
+- Rounded corners (`border-radius: 3px`)
+- Clean corporate appearance
+
+### 5. Crystal White (Modern Apple-inspired Light)
+
+Modern glassmorphism theme inspired by Apple's crystal design language.
+
+**Colors:**
+- Background: Linear gradient from `#f5f5f7` to `#e8e8ed`
+- Panels: `rgba(255, 255, 255, 0.72)` (semi-transparent white)
+- Input fields: `rgba(255, 255, 255, 0.9)`
+- Text: `#1d1d1f` (Apple's near-black)
+- Accent: `rgba(0, 122, 255, 0.9)` (Apple blue)
+
+**Style:**
+- Large rounded corners (`border-radius: 12px`)
+- Glassmorphism with `backdrop-filter: blur(20px)`
+- Soft box shadows
+- Smooth hover transitions
+- System font stack (-apple-system, SF Pro Display)
+- No beveled borders - flat modern design
+
+### 6. Crystal Black (Modern Apple-inspired Dark)
+
+Dark glassmorphism theme matching Apple's dark mode crystal aesthetic.
+
+**Colors:**
+- Background: Linear gradient from `#1d1d1f` to `#0d0d0d`
+- Panels: `rgba(44, 44, 46, 0.72)` (semi-transparent dark)
+- Input fields: `rgba(28, 28, 30, 0.9)`
+- Text: `#f5f5f7` (Apple's off-white)
+- Accent: `rgba(10, 132, 255, 0.9)` (Apple blue for dark mode)
+
+**Style:**
+- Large rounded corners (`border-radius: 12px`)
+- Glassmorphism with `backdrop-filter: blur(20px)`
+- Soft glow shadows
+- Smooth hover transitions
+- System font stack (-apple-system, SF Pro Display)
+- Subtle light borders for depth
   
 ## CSS Variables
 
