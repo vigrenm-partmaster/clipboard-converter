@@ -622,12 +622,23 @@
             });
         }
 
+        // Load saved mode
+        const savedMode = localStorage.getItem('mode');
+        if (savedMode) {
+            currentMode = savedMode;
+            document.querySelectorAll('.mode-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.mode === savedMode);
+            });
+        }
+
         // Mode selector
         document.querySelectorAll('.mode-btn').forEach(btn => {
             btn.addEventListener('click', () => {
                 document.querySelectorAll('.mode-btn').forEach(b => b.classList.remove('active'));
                 btn.classList.add('active');
                 currentMode = btn.dataset.mode;
+                // Save mode preference
+                localStorage.setItem('mode', currentMode);
                 // Auto-convert if there's input
                 if (document.getElementById('input').value.trim()) {
                     convert();
