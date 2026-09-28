@@ -534,6 +534,9 @@
                         <button class="mode-btn" data-mode=";=" id="mode-semicolon-equals">
                             ;= (Semicolon Equals)
                         </button>
+                        <button class="mode-btn" data-mode="," id="mode-comma">
+                            , (Comma)
+                        </button>
                     </div>
                     <div class="action-buttons">
                         <button class="btn btn-secondary" onclick="clearAll()">
@@ -571,7 +574,7 @@
             <ol>
                 <li>Copy a column from Excel (Ctrl+C)</li>
                 <li>Paste into the input box above (Ctrl+V) - converts automatically</li>
-                <li>Select your format: <code>;</code> or <code>;=</code></li>
+                <li>Select your format: <code>;</code>, <code>;=</code> or <code>,</code></li>
                 <li>Click <strong>Copy to Clipboard</strong> to use the result</li>
                 <li>Use <strong>Semicolon Equals</strong> for exact matches on part numbers</li>
                 <li>Don't copy more than 2500 parts</li>
@@ -673,6 +676,9 @@
             if (currentMode === ';') {
                 // Join with semicolon
                 result = uniqueLines.join(';');
+            } else if (currentMode === ',') {
+                // Join with comma
+                result = uniqueLines.join(',');
             } else {
                 // Prepend ;= to each item
                 result = uniqueLines.map(line => '=' + line).join(';');
