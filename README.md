@@ -9,6 +9,7 @@ A simple web app to convert Excel column data to semicolon-separated format.
 
 - **`;` Mode**: Join items with semicolons → `Part1;Part2;Part3`
 - **`;=` Mode**: Prepend `;=` to each item → `;=Part1;=Part2;=Part3`
+- **`,` Mode**: Join items with commas → `Part1,Part2,Part3`
 - Auto-convert on paste
 - One-click copy to clipboard
 - Works offline (no server needed)
